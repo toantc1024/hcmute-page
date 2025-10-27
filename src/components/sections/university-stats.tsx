@@ -19,7 +19,7 @@ const stats: StatItem[] = [
     color: "text-blue-900",
   },
   {
-    number: 270000,
+    number: 27000,
     suffix: "+",
     description: "Sinh viên đang theo học tại trường",
     color: "text-red-800",
