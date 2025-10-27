@@ -30,8 +30,8 @@ const companyLogos = [
 
 export default function PartnerLogos() {
   return (
-    <section className="py-20 bg-white overflow-hidden h-screen relative">
-      <div className=" max-w-xl size-full opacity-[.3] absolute top-0 left-[-10rem]">
+    <section className="py-20 bg-white overflow-hidden  relative">
+      <div className=" max-w-xl size-full opacity-[.4] absolute top-0 left-[-10rem]">
         <Globe className="right-0 " />
       </div>
       <div className="max-w-7xl mx-auto relative px-4 sm:px-6 lg:px-8">
