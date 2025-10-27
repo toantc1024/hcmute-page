@@ -27,7 +27,7 @@ const stats: StatItem[] = [
   {
     number: 52,
     suffix: "",
-    description: "Khoa đào tạo chuyên ngành",
+    description: "Chuyên ngành đào tạo",
     color: "text-blue-900",
   },
 ];
