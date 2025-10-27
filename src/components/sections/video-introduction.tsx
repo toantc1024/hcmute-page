@@ -50,7 +50,7 @@ export default function VideoIntroduction() {
             </AuroraText>
           </h2>
           <p className="text-lg text-gray-600 text-start mx-auto">
-            Hành trình 30 năm xây dựng và phát triển của Trường Đại học Sư phạm
+            Hành trình 63 năm xây dựng và phát triển của Trường Đại học Sư phạm
             Kỹ thuật TP.HCM
           </p>
         </motion.div>
@@ -97,7 +97,7 @@ export default function VideoIntroduction() {
                   Trường Đại học Sư phạm Kỹ thuật TP.HCM
                 </h3>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Với hơn 30 năm hình thành và phát triển, HCMUTE đã khẳng định
+                  Với hơn 63 năm hình thành và phát triển, HCMUTE đã khẳng định
                   vị thế là một trong những trường đại học kỹ thuật hàng đầu
                   Việt Nam, đào tạo nguồn nhân lực chất lượng cao cho các ngành
                   kỹ thuật và công nghệ.

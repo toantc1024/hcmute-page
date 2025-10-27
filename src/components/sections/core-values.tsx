@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Users, Globe, Lightbulb } from "lucide-react";
+import { Users, Globe, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
 import { AuroraText } from "../ui/aurora-text";
 
 const coreValuesData = [
@@ -65,6 +65,18 @@ export default function CoreValues() {
       return () => clearTimeout(timer);
     }
   }, [isUserInteracting]);
+
+  const nextSlide = () => {
+    setIsUserInteracting(true);
+    setCurrentSlide((prev) => (prev + 1) % coreValuesData.length);
+  };
+
+  const prevSlide = () => {
+    setIsUserInteracting(true);
+    setCurrentSlide(
+      (prev) => (prev - 1 + coreValuesData.length) % coreValuesData.length
+    );
+  };
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -150,6 +162,22 @@ export default function CoreValues() {
                   );
                 })}
               </motion.div>
+            </div>
+            
+            {/* Navigation Buttons */}
+            <div className="flex justify-center gap-4 mt-6">
+              <button
+                onClick={prevSlide}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600 hover:text-blue-600" />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-600 hover:text-blue-600" />
+              </button>
             </div>
           </motion.div>
         </div>

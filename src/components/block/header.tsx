@@ -184,7 +184,7 @@ export default function Navbar() {
       <div
         className={`transition-all duration-300 ${
           isScrolled
-            ? "bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50"
+            ? "bg-white/70 backdrop-blur-md shadow-lg border-b border-gray-200/50"
             : "bg-white shadow-md border-b border-gray-200"
         }`}
       >

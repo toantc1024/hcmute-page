@@ -43,7 +43,7 @@ export default function UniversityLeadership() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12  "
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -63,7 +63,7 @@ export default function UniversityLeadership() {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col justify-end justify-center pt-36 relative">
+      <div className="flex flex-col justify-end justify-center pt-16 relative">
         {/* Navigation Arrows - Top Right */}
         <div className="absolute top-0 right-8 z-30 flex space-x-2">
           <button
