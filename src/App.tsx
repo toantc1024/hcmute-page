@@ -6,6 +6,7 @@ import CoreValues from "./components/sections/core-values";
 import VideoIntroduction from "./components/sections/video-introduction";
 import UniversityLeadership from "./components/sections/university-leadership";
 import NewsSection from "./components/sections/news-section";
+import PartnerLogos from "./components/sections/partner-logos";
 import { Toaster } from "./components/ui/sonner";
 import HeaderSpacer from "./components/ui/header-spacer";
 
@@ -19,6 +20,7 @@ const App = () => {
       <CoreValues />
       <VideoIntroduction />
       <UniversityLeadership />
+      <PartnerLogos />
       <NewsSection />
       <Footer />
       <Toaster />

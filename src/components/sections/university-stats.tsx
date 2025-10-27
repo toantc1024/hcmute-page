@@ -72,9 +72,12 @@ export default function UniversityStats() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl text-start font-bold text-gray-900 mb-4">
-            Trường đại học
-            <AuroraText className="px-2" colors={["#002e7dff", "#ae0303ff"]}>
-              kỹ thuật
+            Trường Đại học
+            <AuroraText
+              className="px-2"
+              colors={["#0c4ebfff", "#1760dfff", "#ae0303ff"]}
+            >
+              kỹ thuật - công nghệ
             </AuroraText>
             hàng đầu Việt Nam
           </h2>

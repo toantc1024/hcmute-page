@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 export default function VideoIntroduction() {
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
+    <section className="py-20 bg-white relative h-auto">
       <div className="absolute top-0 right-0 w-full h-full pointer-events-none overflow-hidden">
         <GridPattern
           squares={[
@@ -42,7 +42,10 @@ export default function VideoIntroduction() {
         >
           <h2 className="text-3xl md:text-4xl text-start font-bold text-gray-900 mb-4">
             Khám phá
-            <AuroraText className="px-2" colors={["#002e7dff", "#ae0303ff"]}>
+            <AuroraText
+              className="px-2"
+              colors={["#0c4ebfff", "#1760dfff", "#ae0303ff"]}
+            >
               HCMUTE
             </AuroraText>
           </h2>

@@ -167,86 +167,38 @@ const tuyenSinhItems = [
 ];
 
 export default function Navbar() {
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = 0;
-    let ticking = false;
-
     const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-
-          // More stable logic - only change state when there's significant scroll
-          if (Math.abs(currentScrollY - lastScrollY) > 50) {
-            if (currentScrollY < lastScrollY && currentScrollY > 50) {
-              // Scrolling up significantly - show banner
-              setIsBannerVisible(true);
-            } else if (currentScrollY > lastScrollY && currentScrollY > 150) {
-              // Scrolling down significantly and past threshold - hide banner
-              setIsBannerVisible(false);
-            }
-            lastScrollY = currentScrollY;
-          }
-
-          ticking = false;
-        });
-        ticking = true;
-      }
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []); // Remove dependency to prevent re-rendering
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
       <div
-        className={`bg-gradient-to-r from-blue-600 to-blue-700 text-white transition-all duration-700 ease-in-out overflow-hidden ${
-          isBannerVisible ? "max-h-16" : "max-h-0"
+        className={`transition-all duration-300 ${
+          isScrolled
+            ? "bg-white/80 backdrop-blur-md shadow-lg border-b border-gray-200/50"
+            : "bg-white shadow-md border-b border-gray-200"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="flex items-center justify-between">
-            {/* Left side - Welcome message */}
-            <div className="flex-1 text-center lg:text-left">
-              <p className="text-sm font-medium"></p>
-            </div>
-
-            {/* Right side - Navigation menu */}
-            <div className="hidden lg:flex items-center space-x-6 text-sm">
-              {/* Language Switcher */}
-              <div className="flex items-center space-x-2">
-                <button className="hover:text-blue-200 transition-colors font-medium">
-                  VI
-                </button>
-                <span className="text-blue-300">|</span>
-                <button className="hover:text-blue-200 transition-colors">
-                  EN
-                </button>
-              </div>
-
-              {/* Search Icon */}
-              <button className="hover:text-blue-200 transition-colors p-2 hover:bg-blue-500/20 rounded-lg">
-                <Search size={20} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white shadow-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-16">
+          <div className="flex items-center h-16 relative">
             {/* Left Side Navigation */}
-            <div className="hidden lg:flex items-center space-x-1 flex-1">
+            <div className="hidden lg:flex items-center space-x-1">
               <NavigationMenu>
                 <NavigationMenuList>
                   {/* Về HCMUTE */}
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger>Về HCMUTE</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                      Về HCMUTE
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                         <li className="row-span-3">
@@ -280,7 +232,9 @@ export default function Navbar() {
 
                   {/* Sinh viên */}
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger>Sinh viên</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                      Sinh viên
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {sinhVienItems.map((item) => (
@@ -298,7 +252,9 @@ export default function Navbar() {
 
                   {/* CBVC */}
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger>CBVC</NavigationMenuTrigger>
+                    <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                      CBVC
+                    </NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                         {cbvcItems.map((item) => (
@@ -317,7 +273,7 @@ export default function Navbar() {
                   {/* Cựu sinh viên */}
                   <NavigationMenuItem>
                     <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
+                      className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent`}
                       href="/cuu-sinh-vien"
                     >
                       Cựu sinh viên
@@ -327,9 +283,9 @@ export default function Navbar() {
               </NavigationMenu>
             </div>
 
-            {/* Center Logo */}
-            <div className="w-full  flex justify-center">
-              <a href="/" className="flex  items-center">
+            {/* Center Logo - Absolutely centered */}
+            <div className="absolute left-1/2 transform -translate-x-1/2">
+              <a href="/" className="flex items-center">
                 <img
                   src={SQUARE_LOGO}
                   alt="HCMUTE Logo"
@@ -339,83 +295,110 @@ export default function Navbar() {
             </div>
 
             {/* Right Side Navigation */}
-            <div className="hidden lg:flex items-center space-x-1 flex-1 justify-end">
-              <NavigationMenu>
-                <NavigationMenuList>
-                  {/* Nghiên cứu */}
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Nghiên cứu</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        {nghienCuuItems.map((item) => (
-                          <ListItem
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                          >
-                            {item.description}
-                          </ListItem>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+            <div className="hidden lg:flex items-center ml-auto">
+              <div className="flex items-center space-x-1">
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    {/* Nghiên cứu */}
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                        Nghiên cứu
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          {nghienCuuItems.map((item) => (
+                            <ListItem
+                              key={item.title}
+                              title={item.title}
+                              href={item.href}
+                            >
+                              {item.description}
+                            </ListItem>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-                  {/* Hợp tác */}
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Hợp tác</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        {hopTacItems.map((item) => (
-                          <ListItem
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                          >
-                            {item.description}
-                          </ListItem>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+                    {/* Hợp tác */}
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                        Hợp tác
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          {hopTacItems.map((item) => (
+                            <ListItem
+                              key={item.title}
+                              title={item.title}
+                              href={item.href}
+                            >
+                              {item.description}
+                            </ListItem>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-                  {/* Tuyển sinh */}
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger>Tuyển sinh</NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        {tuyenSinhItems.map((item) => (
-                          <ListItem
-                            key={item.title}
-                            title={item.title}
-                            href={item.href}
-                          >
-                            {item.description}
-                          </ListItem>
-                        ))}
-                      </ul>
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
+                    {/* Tuyển sinh */}
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+                        Tuyển sinh
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          {tuyenSinhItems.map((item) => (
+                            <ListItem
+                              key={item.title}
+                              title={item.title}
+                              href={item.href}
+                            >
+                              {item.description}
+                            </ListItem>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
 
-                  {/* Tin tức & Sự kiện */}
-                  <NavigationMenuItem>
-                    <NavigationMenuLink
-                      className={navigationMenuTriggerStyle()}
-                      href="/tin-tuc"
-                    >
-                      Tin tức & Sự kiện
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                </NavigationMenuList>
-              </NavigationMenu>
+                    {/* Tin tức & Sự kiện */}
+                    <NavigationMenuItem>
+                      <NavigationMenuLink
+                        className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent`}
+                        href="/tin-tuc"
+                      >
+                        Tin tức & Sự kiện
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
+              </div>
             </div>
+            {/* Language Flags and Search */}
+            <div className="absolute right-[-8rem] flex items-center ">
+              {/* Language Select */}
+              <div className="flex items-center">
+                <select
+                  className="bg-transparent border border-gray-300 rounded-lg px-3 py-1 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:border-gray-400 transition-colors"
+                  defaultValue="VN"
+                >
+                  <option value="VN">VN</option>
+                  <option value="EN">EN</option>
+                </select>
+              </div>
 
+              {/* Search Icon */}
+              <button className="hover:bg-gray-100 transition-colors p-2 rounded-lg text-gray-600 hover:text-gray-900">
+                <Search size={20} />
+              </button>
+            </div>
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsSheetOpen(true)}
-              className="lg:hidden text-gray-700 ml-4"
-            >
-              <Menu size={24} />
-            </button>
+            <div className="lg:hidden ml-auto">
+              <button
+                onClick={() => setIsSheetOpen(true)}
+                className="text-gray-700"
+              >
+                <Menu size={24} />
+              </button>
+            </div>
           </div>
         </div>
       </div>
