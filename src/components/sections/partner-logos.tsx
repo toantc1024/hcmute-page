@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AuroraText } from "../ui/aurora-text";
 import { Marquee } from "@/components/ui/marquee";
 import { Globe } from "../ui/globe";
 
