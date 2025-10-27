@@ -19,14 +19,14 @@ const stats: StatItem[] = [
     color: "text-blue-900",
   },
   {
-    number: 100000,
+    number: 270000,
     suffix: "+",
     description: "Sinh viên đang theo học tại trường",
     color: "text-red-800",
   },
   {
-    number: 20,
-    suffix: "+",
+    number: 52,
+    suffix: "",
     description: "Khoa đào tạo chuyên ngành",
     color: "text-blue-900",
   },
@@ -72,14 +72,13 @@ export default function UniversityStats() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl text-start font-bold text-gray-900 mb-4">
-            Trường Đại học
+            TRƯỜNG TRỌNG ĐIỂM QUỐC GIA VỀ
             <AuroraText
               className="px-2"
               colors={["#0c4ebfff", "#1760dfff", "#ae0303ff"]}
             >
-              kỹ thuật - công nghệ
+              KỸ THUẬT & CÔNG NGHỆ
             </AuroraText>
-            hàng đầu Việt Nam
           </h2>
           <p className="text-lg text-gray-600 text-start mx-auto">
             Thúc đẩy tri thức và đổi mới sáng tạo vì một tương lai bền vững
@@ -106,7 +105,6 @@ export default function UniversityStats() {
                   {/* posfix */}
                   {stat.number && (
                     <NumberTicker
-                      startValue={stat.number - 50}
                       value={stat.number}
                       className={`inline-block  ${stat.color}`}
                     />

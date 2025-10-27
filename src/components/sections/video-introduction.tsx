@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 export default function VideoIntroduction() {
   return (
-    <section className="py-20 bg-white relative h-auto">
-      <div className="absolute top-0 right-0 w-full h-full pointer-events-none overflow-hidden">
+    <section className="pb-2 bg-white relative h-auto">
+      <div className="absolute top-0 right-0 w-full h-full pointer-events-none ">
         <GridPattern
           squares={[
             [4, 4],
@@ -34,14 +34,14 @@ export default function VideoIntroduction() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl text-start font-bold text-gray-900 mb-4">
-            Khám phá
+            KHÁM PHÁ
             <AuroraText
               className="px-2"
               colors={["#0c4ebfff", "#1760dfff", "#ae0303ff"]}

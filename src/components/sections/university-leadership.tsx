@@ -50,7 +50,7 @@ export default function UniversityLeadership() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Lãnh đạo của
+            LÃNH ĐẠO CỦA
             <AuroraText className="px-2" colors={["#002e7dff", "#ae0303ff"]}>
               HCMUTE
             </AuroraText>

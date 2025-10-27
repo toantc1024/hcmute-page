@@ -55,26 +55,6 @@ const newsItems: NewsItem[] = [
     image: "/news/Hinh khoi nghiep 11.jpg",
     readTime: "3 phút",
   },
-  {
-    id: 105,
-    title: "HCMUTE công bố kết quả nghiên cứu về năng lượng tái tạo",
-    excerpt:
-      "Nghiên cứu mới về pin mặt trời hiệu suất cao được công bố trên tạp chí khoa học quốc tế uy tín.",
-    date: "2024-01-05",
-    category: "Nghiên cứu",
-    image: "/news/giai-nha-robot.jpeg",
-    readTime: "5 phút",
-  },
-  {
-    id: 106,
-    title: "Lễ khai giảng năm học mới 2024-2025",
-    excerpt:
-      "Trường đón 8,000 sinh viên mới trong năm học 2024-2025 với nhiều ngành học mới được mở thêm.",
-    date: "2024-01-03",
-    category: "Sự kiện",
-    image: "/news/Hinh khoi nghiep 11.jpg",
-    readTime: "2 phút",
-  },
 ];
 
 const formatDate = (dateString: string) => {
@@ -116,7 +96,7 @@ export default function NewsSection() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Tin tức & Sự kiện
+            TIN TỨC & SỰ KIỆN
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Cập nhật những thông tin mới nhất về hoạt động đào tạo, nghiên cứu

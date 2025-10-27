@@ -2,7 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Users, Globe, Lightbulb, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Users,
+  Globe,
+  Lightbulb,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { AuroraText } from "../ui/aurora-text";
 
 const coreValuesData = [
@@ -91,12 +97,12 @@ export default function CoreValues() {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 whitespace-nowrap">
-              Triết lý
+              TRIẾT LÝ
               <AuroraText
                 className="px-2"
                 colors={["#0c4ebfff", "#1760dfff", "#ae0303ff"]}
               >
-                Giáo dục
+                GIÁO DỤC
               </AuroraText>
             </h2>
             <p className="text-6xl flex gap-2 font-bold text-black-900 leading-relaxed">
@@ -163,7 +169,7 @@ export default function CoreValues() {
                 })}
               </motion.div>
             </div>
-            
+
             {/* Navigation Buttons */}
             <div className="flex justify-center gap-4 mt-6">
               <button
