@@ -93,16 +93,6 @@ export function generateRandomShortCode(length: number = 6): string {
  * Utility function to track link visits with error handling
  * Returns true if tracking was successful, false otherwise
  */
-export async function trackLinkVisit(linkId: string): Promise<boolean> {
-  try {
-    const { createLinkVisit } = await import("@/services/link_visit.service");
-    const result = await createLinkVisit(linkId);
-    return result !== null;
-  } catch (error) {
-    console.warn("Failed to track link visit:", error);
-    return false;
-  }
-}
 
 export const truncateUrl = (url: string, maxLength: number = 50): string => {
   if (url.length <= maxLength) return url;
