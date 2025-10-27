@@ -2,17 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Users,
-  Globe,
-  Lightbulb,
-  QuoteIcon,
-  TextQuote,
-} from "lucide-react";
+import { Users, Globe, Lightbulb } from "lucide-react";
 import { AuroraText } from "../ui/aurora-text";
-import { DoubleQuoteSansLeftIcon } from "../ui/icons/oi-double-quote-sans-left";
 
 const coreValuesData = [
   {
@@ -74,18 +65,6 @@ export default function CoreValues() {
       return () => clearTimeout(timer);
     }
   }, [isUserInteracting]);
-
-  const nextSlide = () => {
-    setIsUserInteracting(true);
-    setCurrentSlide((prev) => (prev + 1) % coreValuesData.length);
-  };
-
-  const prevSlide = () => {
-    setIsUserInteracting(true);
-    setCurrentSlide(
-      (prev) => (prev - 1 + coreValuesData.length) % coreValuesData.length
-    );
-  };
 
   return (
     <section className="py-20 relative overflow-hidden">
